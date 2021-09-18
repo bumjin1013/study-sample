@@ -5,7 +5,9 @@ import './LandingPage.css'
 import ItemList from './ItemList';
 
 function LandingPage() {
-    const [itemList, setItemList] = useState([]);
+    const [itemList, setItemList] = useState([ {id : 0, text: '기본 todo1', checked : false},
+    {id : 1, text: '기본 todo2', checked : true},
+    {id : 2, text: '기본 todo3', checked : false},]);
     // const [count, setCount] = useState(0);
     // let body = {
     //     userEmail: 'selina2000@naver.com'

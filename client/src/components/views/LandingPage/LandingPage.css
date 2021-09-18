@@ -3,10 +3,10 @@
   overflow-y: scroll;
 }
 .section-list {
-  background-color: yellow;
+  /* background-color: yellow; */
   width: 400px;
 }
 .detail {
-  background-color: skyblue;
+  /* background-color: skyblue; */
   width:100%;
 }

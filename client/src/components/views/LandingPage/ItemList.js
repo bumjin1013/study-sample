@@ -1,6 +1,7 @@
 import React from 'react';
 import './css.css';
 import Item from './Item';
+import { List, Typography, Divider } from 'antd';
 
 const ItemList = ({items}) => {
   const itemList = items.map(({id,checked,text}) => (
@@ -14,8 +15,17 @@ const ItemList = ({items}) => {
   console.log(itemList);
   return (
     <div>
-      <h1>ItemList Template</h1>
-      {itemList}
+      <List
+      header={<div>ItemList Template</div>}
+      bordered
+      dataSource={itemList}
+      renderItem={item => (
+        <List.Item>
+          <Typography.Text mark>title : {item.props.text}</Typography.Text> {item}
+        </List.Item>
+      )}
+    />
+      
     </div>
   );
 };
