@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Item = ({count}) => {
+const Item = ({text,id,checked}) => {
   return (
     <div>
-      item{count}
+      item{id}
     </div>
   );
 };
