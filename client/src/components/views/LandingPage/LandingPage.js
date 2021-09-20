@@ -3,7 +3,7 @@ import { FaCode } from "react-icons/fa";
 import axios from "axios";
 import "./LandingPage.css";
 import ItemList from "./ItemList";
-
+import DetailPage from './DetailPage';
 function LandingPage() {
     const [itemList, setItemList] = useState([
         { id: 0, title: "기본 todo1", context: "context", checked: false ,date:"2021-09-15"},
@@ -48,8 +48,7 @@ function LandingPage() {
                     <ItemList items={itemList} />
                 </section>
                 <section className="detail main-section">
-                    Detail Page
-                    <button >button</button>
+                    <DetailPage/>
                 </section>
             </div>
             <div style={{ float: "right" }}>
