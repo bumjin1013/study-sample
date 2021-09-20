@@ -20,11 +20,12 @@ body {
 }
 
 .app {
-  flex-direction: column;
+  /* flex-direction: column; */
+  flex-direction: row;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: calc(100vh - 150px);
 }
 
 input.error {
