@@ -56,8 +56,7 @@ function LandingPage() {
                 <button onClick={Clicked}>button</button>
                 </section>
 
-//                 <FaCode style={{ fontSize: '4rem' }} /><br />
-                <button  onClick={addTodo}> add</button>
+
 
             </div>
             <div style={{ float: 'right' }}>Thanks For Using This Boiler Plate by John Ahn</div>
