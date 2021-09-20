@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const jwt = require('jsonwebtoken');
 const moment = require("moment");
+const { checkout } = require('../routes/users');
 
 const userSchema = mongoose.Schema({
     name: {
@@ -32,6 +33,12 @@ const userSchema = mongoose.Schema({
     },
     tokenExp :{
         type: Number
+    },
+    todo :{
+        date : {type: String},
+        checked : {type: Boolean, default: false },
+        title: {type: String},
+        context: {type: String}
     }
 })
 

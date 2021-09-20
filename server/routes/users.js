@@ -73,10 +73,32 @@ router.get("/getUser", auth, (req, res) =>{
     User.findOne({ _id: req.user._id })
     .exec((err, userInfo) => {
         console.log(userInfo);
+
         if (err) return res.status(400).json({ success: false, err })
-        res.status(200).json({ success: true, userInfo })
+        res.status(200).json( userInfo.email )
     });
 })
+
+router.post("/addTodo", auth, (req, res) =>{
+    
+    console.log(req.body);
+    
+    User.findOneAndUpdate({ _id: req.user._id },{
+        $push:{
+            'todo': {
+                context: req.body.context,
+                date: req.body.date,
+                title: req.body.title,
+                checked: false
+            }
+        }  
+        },{ new: true },
+        (err, userInfo) => {
+            if (err) return res.status(400).json({ success: false, err })
+            res.status(200).send({ success: true, userInfo })
+        }
+    )
+});
 
 
 module.exports = router;

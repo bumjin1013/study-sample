@@ -4,33 +4,39 @@ import axios from 'axios';
 
 function LandingPage() {
     
-    let body = {
-        userEmail: 'selina2000@naver.com'
+    const [Title, setTitle] = useState('title');
+    const [Date, setDate] = useState('2021-22-22');
+    const [Context, setContext] = useState('내용');
+    const [Checked, setChecked] = useState();
+
+
+    const addTodo = () => {
+
+        let body = {
+            title : Title,
+            date : Date,
+            context: Context,
+        }
+
+        axios.post("/api/users/addTodo", body)
+            .then(response => {
+                if(response.data){
+                    console.log(response.data);
+                } else {
+                    console.log('err');
+                }
+            })
     }
-    
-    const [User, setUser] = useState();
-
-    const getUserInfo = () => {
-        axios.get("/api/users/getUser").then((response) => {
-            if (response.data.success) {
-                setUser(response.data); 
-            } else {
-              alert("err");
-            }
-          });
-
-          console.log(User);
-    }
-    
-
     
     return (
         <>
             <div className="app">
                 <FaCode style={{ fontSize: '4rem' }} /><br />
-                <button onClick={getUserInfo}>유저 정보 불러오기</button>
+                <button  onClick={addTodo}> add</button>
             </div>
             <div style={{ float: 'right' }}>Thanks For Using This Boiler Plate by John Ahn</div>
+           
+            
         </>
     )
 }
