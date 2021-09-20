@@ -1,12 +1,12 @@
 import React from 'react';
 import './css.css';
 import { Menu } from 'antd';
-const Item = ({text,id,checked}) => {
+const Item = ({id,title,context,checked,date}) => {
   return (
     <div className="item-container">
-      <div className="title">item{id}</div>
+      <div className="title">item{id} : {title}</div>
       <div className="text">
-        {text}
+        {context}
       </div>
     </div>
   );

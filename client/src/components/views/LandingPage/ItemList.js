@@ -4,24 +4,26 @@ import Item from './Item';
 import { List, Typography, Divider } from 'antd';
 
 const ItemList = ({items}) => {
-  const itemList = items.map(({id,checked,text}) => (
+  const itemList = items.map(({id,title,context,checked,date}) => (
     <Item 
     key={id}
       id={id}
+      title={title}
+      context={context}
       checked={checked}
-      text={text}
+      date={date}
       />
   ));
   console.log(itemList);
   return (
     <div>
       <List
-      header={<div>ItemList Template</div>}
+      header={<div>ItemList</div>}
       bordered
       dataSource={itemList}
       renderItem={item => (
         <List.Item>
-          <Typography.Text mark>title : {item.props.text}</Typography.Text> {item}
+          <Typography.Text mark>title : {item.props.title}</Typography.Text> {item}
         </List.Item>
       )}
     />
