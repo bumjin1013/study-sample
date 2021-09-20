@@ -13,18 +13,30 @@ function LandingPage() {
     //     userEmail: 'selina2000@naver.com'
     // }
     
-    // const [User, setUser] = useState();
+    const [Title, setTitle] = useState('title');
+    const [Date, setDate] = useState('2021-22-22');
+    const [Context, setContext] = useState('내용');
+    const [Checked, setChecked] = useState();
 
-    // const getUserInfo = () => {
-    //     axios.get("/api/users/getUser").then((response) => {
-    //         if (response.data) {
-    //             setUser(response.data.email); 
-    //             console.log(response.data.email)
-    //         } else {
-    //           alert("err");
-    //         }
-    //       });
-    // }
+
+    const addTodo = () => {
+
+        let body = {
+            title : Title,
+            date : Date,
+            context: Context,
+        }
+
+        axios.post("/api/users/addTodo", body)
+            .then(response => {
+                if(response.data){
+                    console.log(response.data);
+                } else {
+                    console.log('err');
+                }
+            })
+    }
+
     
     function Clicked() {
         setItemList([ {id : 0, text: '기본 todo1', checked : false},
@@ -34,6 +46,7 @@ function LandingPage() {
     return (
         <>
             <div className="app">
+
                 {/* <FaCode style={{ fontSize: '4rem' }} /><br /> */}
                 {/* <button onClick={getUserInfo}>유저 정보 불러오기</button> */}
                 <section className="section-list main-section">
@@ -42,8 +55,14 @@ function LandingPage() {
                 <section className="detail main-section">Detail Page
                 <button onClick={Clicked}>button</button>
                 </section>
+
+//                 <FaCode style={{ fontSize: '4rem' }} /><br />
+                <button  onClick={addTodo}> add</button>
+
             </div>
             <div style={{ float: 'right' }}>Thanks For Using This Boiler Plate by John Ahn</div>
+           
+            
         </>
     )
 }
