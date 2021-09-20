@@ -42,11 +42,14 @@ function LandingPage() {
         <>
             <div className="app">
                 <section className="section-list main-section">
+                    <div>
+                        <button className="btn-add" onClick={addTodo}>item add +</button>
+                    </div>
                     <ItemList items={itemList} />
                 </section>
                 <section className="detail main-section">
                     Detail Page
-                    <button onClick={addTodo}>button</button>
+                    <button >button</button>
                 </section>
             </div>
             <div style={{ float: "right" }}>
