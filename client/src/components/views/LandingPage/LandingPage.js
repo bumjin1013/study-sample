@@ -4,6 +4,7 @@ import axios from "axios";
 import "./LandingPage.css";
 import ItemList from "./ItemList";
 import DetailPage from './DetailPage';
+import AddFormPage from "./AddFormPage";
 function LandingPage() {
     const [itemList, setItemList] = useState([
         { id: 0, title: "기본 todo1", context: "context", checked: false ,date:"2021-09-15"},
@@ -15,7 +16,7 @@ function LandingPage() {
     const [Date, setDate] = useState("2021-22-22");
     const [Context, setContext] = useState("내용");
     const [Checked, setChecked] = useState();
-
+    const [DetailPageSeleted, setDetailPageSeleted] = useState(true);
     //디비 관련
     // const addTodo = () => {
     //     let body = {
@@ -32,23 +33,27 @@ function LandingPage() {
     //         }
     //     });
     // };
-    const addTodo = () => {
+    const addTodoClick = () => {
         setItemList([...itemList,{ id: itemCount, title: "기본 todo3", context: "context", checked: false,date:"2021-09-17" }]);
         setItemCount(itemCount+1);
+				setDetailPageSeleted(false);
     }
-   
+		const addTodoSubmitCompelete = (complete) => {
+				setDetailPageSeleted(complete);
+		}
 
     return (
         <>
             <div className="app">
                 <section className="section-list main-section">
                     <div>
-                        <button className="btn-add" onClick={addTodo}>item add +</button>
+                        <button className="btn-add" onClick={addTodoClick}>item add +</button>
                     </div>
                     <ItemList items={itemList} />
-                </section>
+                </section>			
                 <section className="detail main-section">
-                    <DetailPage/>
+										{DetailPageSeleted ?  <DetailPage/> :  <AddFormPage addTodoSubmit={addTodoSubmitCompelete}/> }
+                   	
                 </section>
             </div>
             <div style={{ float: "right" }}>

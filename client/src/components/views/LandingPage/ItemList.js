@@ -4,6 +4,7 @@ import Item from './Item';
 import { List, Typography, Divider } from 'antd';
 
 const ItemList = ({items}) => {
+
   const itemList = items.map(({id,title,context,checked,date}) => (
     <Item 
     key={id}
