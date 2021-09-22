@@ -2,20 +2,23 @@ import React, { useState } from 'react';
 import { Form, Input, Button, Radio } from 'antd';
 
 const AddFormPage = ({addTodoSubmit}) => {
+  const [formData,setFormData] = useState({title:'',context:''});
   const submitForm = (e) => {
     	e.preventDefault();
-      addTodoSubmit(true)
+      console.log(formData);
+      addTodoSubmit({complete:true,...formData})
   }
-
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
   return (
     <Form layout="vertical"  >
-      <Form.Item label="Field A" required>
-        <Input placeholder="input placeholder" />
+      <Form.Item label="title"  required  onChange={handleChange} >
+        <Input placeholder="input title" name="title"/>
       </Form.Item>
-      <Form.Item
-        label="Field B"
-      >
-        <Input placeholder="input placeholder" />
+       <Form.Item label="context"  onChange={handleChange} >
+        <Input.TextArea name="context" />
       </Form.Item>
       <Form.Item>
         <Button type="primary" onClick={submitForm}>Submit</Button>

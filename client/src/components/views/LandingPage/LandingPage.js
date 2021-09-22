@@ -7,9 +7,9 @@ import DetailPage from './DetailPage';
 import AddFormPage from "./AddFormPage";
 function LandingPage() {
     const [itemList, setItemList] = useState([
-        { id: 0, title: "기본 todo1", context: "context", checked: false ,date:"2021-09-15"},
-        { id: 1, title: "기본 todo2", context: "context", checked: true,date:"2021-09-16" },
-        { id: 2, title: "기본 todo3", context: "context", checked: false,date:"2021-09-17" },
+        { id: 0, title: "기본 todo1", context: "context1", checked: false ,date:"2021-09-15"},
+        { id: 1, title: "기본 todo2", context: "context2", checked: true,date:"2021-09-16" },
+        { id: 2, title: "기본 todo3", context: "context3", checked: false,date:"2021-09-17" },
     ]);
     const [itemCount, setItemCount] = useState(3);
     const [Title, setTitle] = useState("title");
@@ -34,12 +34,13 @@ function LandingPage() {
     //     });
     // };
     const addTodoClick = () => {
-        setItemList([...itemList,{ id: itemCount, title: "기본 todo3", context: "context", checked: false,date:"2021-09-17" }]);
-        setItemCount(itemCount+1);
+
 				setDetailPageSeleted(false);
     }
-		const addTodoSubmitCompelete = (complete) => {
+		const addTodoSubmitCompelete = ({complete,title,context}) => {
 				setDetailPageSeleted(complete);
+				setItemList([...itemList,{ id: itemCount, title: title, context: context, checked: false,date:"2021-09-17" }]);
+        setItemCount(itemCount+1);
 		}
 
     return (
