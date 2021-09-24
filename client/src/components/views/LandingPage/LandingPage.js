@@ -17,6 +17,7 @@ function LandingPage() {
     const [Context, setContext] = useState("내용");
     const [Checked, setChecked] = useState();
     const [DetailPageSeleted, setDetailPageSeleted] = useState(true);
+    const [selectDetail,setSelectDetail ] = useState({});
     //디비 관련
     // const addTodo = () => {
     //     let body = {
@@ -37,12 +38,15 @@ function LandingPage() {
 
 				setDetailPageSeleted(false);
     }
-		const addTodoSubmitCompelete = ({complete,title,context}) => {
-				setDetailPageSeleted(complete);
-				setItemList([...itemList,{ id: itemCount, title: title, context: context, checked: false,date:"2021-09-17" }]);
-        setItemCount(itemCount+1);
-		}
-
+    const addTodoSubmitCompelete = ({complete,title,context}) => {
+            setDetailPageSeleted(complete);
+            setItemList([...itemList,{ id: itemCount, title: title, context: context, checked: false,date:"2021-09-17" }]);
+    setItemCount(itemCount+1);
+    }
+    const handleItemClick = ({id,title,context,checked,date}) => {
+        console.log({id,title,context,checked,date})
+        setSelectDetail({id,title,context,checked,date});
+    }
     return (
         <>
             <div className="app">
@@ -50,10 +54,10 @@ function LandingPage() {
                     <div>
                         <button className="btn-add" onClick={addTodoClick}>item add +</button>
                     </div>
-                    <ItemList items={itemList} />
+                    <ItemList items={itemList} handleItemClick={handleItemClick}/>
                 </section>			
                 <section className="detail main-section">
-										{DetailPageSeleted ?  <DetailPage/> :  <AddFormPage addTodoSubmit={addTodoSubmitCompelete}/> }
+										{DetailPageSeleted ?  <DetailPage selectDetail={selectDetail}/> :  <AddFormPage addTodoSubmit={addTodoSubmitCompelete}/> }
                    	
                 </section>
             </div>
