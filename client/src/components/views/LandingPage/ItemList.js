@@ -17,7 +17,6 @@ const ItemList = ({items,handleItemClick}) => {
       />
     </li>
   ));
-  console.log(itemList);
   
   return (
     <div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,forceUpdate } from "react";
 import { FaCode } from "react-icons/fa";
 import axios from "axios";
 import "./LandingPage.css";
@@ -44,8 +44,17 @@ function LandingPage() {
     setItemCount(itemCount+1);
     }
     const handleItemClick = ({id,title,context,checked,date}) => {
-        console.log({id,title,context,checked,date})
+        
         setSelectDetail({id,title,context,checked,date});
+    }
+    const handleItemChange = ({id,newTitle,newContext}) => {
+        const newItemList = itemList.slice();
+        console.log(id);
+       
+        setItemList( newItemList.map(item =>
+            
+            item.id === id ?{...item,title:newTitle, context:newContext} : item
+          ) );
     }
     return (
         <>
@@ -57,7 +66,7 @@ function LandingPage() {
                     <ItemList items={itemList} handleItemClick={handleItemClick}/>
                 </section>			
                 <section className="detail main-section">
-										{DetailPageSeleted ?  <DetailPage selectDetail={selectDetail}/> :  <AddFormPage addTodoSubmit={addTodoSubmitCompelete}/> }
+										{DetailPageSeleted ?  <DetailPage selectDetail={selectDetail} handleItemChange={handleItemChange}/> :  <AddFormPage addTodoSubmit={addTodoSubmitCompelete}/> }
                    	
                 </section>
             </div>
