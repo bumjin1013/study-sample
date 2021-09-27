@@ -49,12 +49,15 @@ function LandingPage() {
     }
     const handleItemChange = ({id,newTitle,newContext}) => {
         const newItemList = itemList.slice();
-        console.log(id);
        
         setItemList( newItemList.map(item =>
             
             item.id === id ?{...item,title:newTitle, context:newContext} : item
           ) );
+    }
+    const handleItemDelete = (id) => {
+        const newItemList = itemList.slice();
+        setItemList(newItemList.filter((item) => item.id !== id ));
     }
     return (
         <>
@@ -66,7 +69,7 @@ function LandingPage() {
                     <ItemList items={itemList} handleItemClick={handleItemClick}/>
                 </section>			
                 <section className="detail main-section">
-										{DetailPageSeleted ?  <DetailPage selectDetail={selectDetail} handleItemChange={handleItemChange}/> :  <AddFormPage addTodoSubmit={addTodoSubmitCompelete}/> }
+										{DetailPageSeleted ?  <DetailPage selectDetail={selectDetail} handleItemChange={handleItemChange} handleItemDelete={handleItemDelete}/> :  <AddFormPage addTodoSubmit={addTodoSubmitCompelete}/> }
                    	
                 </section>
             </div>
