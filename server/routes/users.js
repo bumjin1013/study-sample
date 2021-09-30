@@ -96,7 +96,7 @@ router.post("/addTodo", auth, (req, res) =>{
         },{ new: true },
         (err, userInfo) => {
             if (err) return res.status(400).json({ success: false, err })
-            res.status(200).send({ success: true, userInfo })
+            // res.status(200).send({ success: true, userInfo })
         }
     )
 });

@@ -1,8 +1,36 @@
 /* item*/
-.item-container {
-  /* background-color:pink; */
-  
+
+li.item-li {
+  list-style:none;
 }
-.item-container + .item-container { 
-  /* border-top : 1px solid rgb(168, 157, 157); */
+li.item-li + li.item-li { 
+  border-top : 1px solid rgb(168, 157, 157);
+
+}
+li.item-li .item-container {
+  padding: 20px;
+  width: 100%;
+}
+/* Detail Page */
+#Detail-Page {
+  padding: 20px 30px;
+  font-size: 20px;
+}
+#Detail-Page .detail-page-title {
+  font-size: 40px;
+  border-bottom: 3px solid black;
+  position: relative;
+  margin-bottom:20px;
+}
+#Detail-Page .detail-page-title button {
+  font-size: 10px;
+  margin-left: 5px;
+  background-color: ;
+}
+#Detail-Page .detail-page-date {
+  font-size: 20px;
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+
 }

@@ -1,33 +1,45 @@
 import React from 'react';
 import './css.css';
-import Item from './Item';
-import { List, Typography, Divider } from 'antd';
+import { List, Typography, Divider,Menu } from 'antd';
 
-const ItemList = ({items}) => {
-  const itemList = items.map(({id,checked,text}) => (
-    <Item 
+const ItemList = ({items,handleItemClick}) => {
+
+  const itemList = items.map(({id,title,context,checked,date}) => (
+    <li key={`item_${id}_li`} className="item-li">
+      <Item 
     key={id}
       id={id}
+      title={title}
+      context={context}
       checked={checked}
-      text={text}
+      date={date}
+      handleItemClick={handleItemClick}
       />
+    </li>
   ));
-  console.log(itemList);
+  
   return (
     <div>
-      <List
-      header={<div>ItemList Template</div>}
-      bordered
-      dataSource={itemList}
-      renderItem={item => (
-        <List.Item>
-          <Typography.Text mark>title : {item.props.text}</Typography.Text> {item}
-        </List.Item>
-      )}
-    />
-      
+      {itemList}
     </div>
   );
 };
+
+const Item = ({id,title,context,checked,date,handleItemClick}) => {
+  const handleClick = () => {
+    handleItemClick({id,title,context,checked,date});
+  }
+  return (
+    <div className="item-container" onClick={handleClick}>
+      <div className="title">{title}</div>
+      <div className="text">
+      item{id} <br/>
+        {context}
+      </div>
+    </div>
+  );
+};
+
+
 
 export default ItemList;

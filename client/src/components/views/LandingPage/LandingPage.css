@@ -2,6 +2,15 @@
   height:100%;
   overflow-y: scroll;
 }
+.main-section button.btn-add {
+  all:unset;
+  width:100%;
+  height:50px;
+  background-color: rgb(64, 207, 207);
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
 .section-list {
   /* background-color: yellow; */
   width: 400px;
